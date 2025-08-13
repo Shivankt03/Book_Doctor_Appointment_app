@@ -1,19 +1,23 @@
 package com.DRschuduling.entity;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import jakarta.persistence.*;
 import java.util.Date;
 
-
-@Document(collection="journal_entries")
+@Entity
+@Table(name = "journal_entries")
 public class journalentry {
     @Id
-   private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(columnDefinition = "TEXT")
     private String content;
 
-    private  Date date;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
     public Date getDate() {
         return date;
@@ -23,13 +27,11 @@ public class journalentry {
         this.date = date;
     }
 
-
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id){
+    public void setId(Long id){
         this.id = id;
     }
 

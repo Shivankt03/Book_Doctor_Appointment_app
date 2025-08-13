@@ -1,8 +1,10 @@
 package com.DRschuduling.repository;
 
 import com.DRschuduling.entity.journalentry;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface journalentryrepository extends MongoRepository<journalentry, String> {
-
+@Repository
+public interface JournalEntryRepository extends JpaRepository<journalentry, Long> {
+    // Basic CRUD operations are automatically provided by JpaRepository
 }
